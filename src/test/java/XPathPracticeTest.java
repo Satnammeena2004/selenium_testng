@@ -50,6 +50,12 @@ public class XPathPracticeTest {
         Assert.assertEquals(elem.getTagName(), "div");
     }
 
+
+    @Test
+    public void cssSelectors(){
+        WebElement elem = driver.findElement(By.cssSelector(""));
+    }
+    
     @AfterClass
     void tearDown() {
         driver.quit();

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>XPath & CSS Selector Practice</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+margin:0;
+padding:0;
+}
+
+header{
+background:#1e293b;
+padding:20px;
+text-align:center;
+font-size:28px;
+}
+
+.container{
+width:90%;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+}
+
+input,button{
+padding:8px;
+margin:5px;
+border-radius:5px;
+border:none;
+}
+
+button{
+background:#3b82f6;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+.section-title{
+font-size:20px;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>XPath & CSS Practice Playground</header>
+
+<div class="container">
+
+<!-- contains() -->
+<div class="card">
+
+<div class="section-title">contains() Example</div>
+
+<label for="username">Username</label>
+<input type="text" id="user_123" name="user_name" placeholder="Enter username">
+
+</div>
+
+
+<!-- starts-with() -->
+<div class="card">
+
+<div class="section-title">starts-with() Example</div>
+
+<label for="usermail">Email</label>
+<input type="email" id="emailInput" name="userEmail" placeholder="Enter email">
+
+</div>
+
+
+<!-- text() -->
+<div class="card">
+
+<div class="section-title">text() Matching</div>
+
+<button id="loginBtn">Login</button>
+<button id="logoutBtn">Logout</button>
+
+</div>
+
+
+<!-- contains(text()) -->
+<div class="card">
+
+<div class="section-title">contains(text()) Example</div>
+
+<button class="action-btn">Login Now</button>
+<button class="action-btn">Register Now</button>
+
+</div>
+
+
+<!-- parent axis -->
+<div class="card">
+
+<div class="section-title">Parent Axis Example</div>
+
+<div class="form-group">
+
+<label for="usernameInput">Username</label>
+<input type="text" id="usernameInput" placeholder="Type username">
+
+</div>
+
+</div>
+
+
+<!-- following sibling -->
+<div class="card">
+
+<div class="section-title">Following Sibling Example</div>
+
+<label for="email">Email Address</label>
+<input type="email" id="email" placeholder="Enter email">
+
+</div>
+
+
+<!-- preceding sibling -->
+<div class="card">
+
+<div class="section-title">Preceding Sibling Example</div>
+
+<label>Password</label>
+<input type="password" id="pass" placeholder="Enter password">
+
+</div>
+
+
+<!-- ancestor / descendant -->
+<div class="card">
+
+<div class="section-title">Ancestor / Descendant Example</div>
+
+<div class="grandparent">
+
+<div class="parent">
+
+<div class="child">
+<input type="text" id="childInput" placeholder="Child Input">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CSS selectors -->
+<div class="card">
+
+<div class="section-title">CSS Selector Practice</div>
+
+<input type="text" class="form-control" name="firstName" placeholder="First Name">
+
+<input type="text" class="form-control" name="lastName" placeholder="Last Name">
+
+<button class="btn primary-btn" data-test="submitBtn">Submit</button>
+
+<button class="btn secondary-btn" data-test="cancelBtn">Cancel</button>
+
+</div>
+
+</div>
+
+</body>
+</html>

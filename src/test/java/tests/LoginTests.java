@@ -1,30 +1,29 @@
-package base;
+package tests;
 
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
-public class BaseTest {
+import pages.LoginPage;
 
-    static private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+public class LoginTests {
 
-    public static WebDriver getDriver() {
-    
-        return driver.get();
-    }
+    // (driver instance) IT SHOULD BE COME FROM BASE TEST !!!!
 
-    @BeforeClass
+    WebDriver d;
+
+    @BeforeMethod
     @Parameters({ "browser" })
     void setup(@Optional("chrome") String browser) {
-        WebDriver d;
         switch (browser) {
             case "chrome" -> d = new ChromeDriver();
             case "firefox" -> d = new FirefoxDriver();
@@ -33,14 +32,17 @@ public class BaseTest {
         }
         d.get("https://www.saucedemo.com/");
         d.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        driver.set(d);
     }
 
     @AfterClass
     void tearDown() {
-        getDriver().quit();
-        driver.remove();
+        d.quit();
+    }
+
+    @Test
+    public void validLoginShouldGoInventory() {
+        LoginPage loginPage = new LoginPage(d);
+        Assert.assertTrue(loginPage.loginAs("standard_user", "secret_sauce"));
     }
 
 }

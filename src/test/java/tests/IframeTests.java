@@ -1,46 +1,44 @@
-package base;
-
-import java.time.Duration;
+package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
-public class BaseTest {
+import pages.IframePage;
 
-    static private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+public class IframeTests {
 
-    public static WebDriver getDriver() {
-    
-        return driver.get();
-    }
+    WebDriverWait wait;
+    WebDriver d;
 
-    @BeforeClass
+    @BeforeMethod
     @Parameters({ "browser" })
     void setup(@Optional("chrome") String browser) {
-        WebDriver d;
         switch (browser) {
             case "chrome" -> d = new ChromeDriver();
             case "firefox" -> d = new FirefoxDriver();
             default -> d = new ChromeDriver();
 
         }
-        d.get("https://www.saucedemo.com/");
-        d.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        driver.set(d);
+        d.get("https://www.selenium.dev/selenium/web/iframes.html");
     }
 
-    @AfterClass
+    @Test
+    public void firstTest() {
+        IframePage frame = new IframePage(d);
+        frame.fillTheValueOfEmailAndAgeAndClick("stnam@gmail.com", 12);
+        Assert.assertTrue(frame.isGreetingDisabled());
+    }
+
+    @AfterMethod
     void tearDown() {
-        getDriver().quit();
-        driver.remove();
+        d.quit();
     }
-
 }

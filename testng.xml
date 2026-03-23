@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="SeleniumSuite" parallel="classes" thread-count="2">
+<suite name="SeleniumSuite">
 
-    <test name="NavigateTests">
+    <test name="SelectTests">
         <parameter name="browser" value="chrome" />
         <classes>
-             <class name="NavigatesTest" />
+            <!-- <class name="NavigatesTest" /> -->
             <!-- <class name="FindWebElem" />  -->
-            <class name="SwagLabsTest" />
+            <!-- <class name="tests.LoginTests" /> -->
+            <!-- <class name="tests.AlertTests" /> -->
+            <!-- <class name="tests.SelectTest" /> -->
+            <class name="tests.IframeTests" />
         </classes>
 
     </test>
